@@ -12,6 +12,7 @@ defaults:
   tmp_dir: "tmp/ado"
   max_results: 100
   timeout_seconds: 30
+  cache_ttl_seconds: 300
 write_policy:
   enabled: false
   require_write_flag: true

@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.0
+## 0.2.0
 
-- Baseline inicial de `ato-skill-ado-cli`.
-- CLI dual humano/máquina.
-- Integración Azure DevOps Cloud para Work Items y Wiki.
-
+- Added P1 capabilities: repo read/export, PR read/export, commits read/export, WIQL command.
+- Added context bundle export and read-cache TTL.
+- Added custom export templates (`--template`) for markdown exports.
+- Added P2-prep run contract command and request/response schemas.
+- Preserved write guardrails (work-item only, explicit write + dry-run flow).
