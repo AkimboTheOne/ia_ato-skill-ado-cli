@@ -57,3 +57,18 @@ def test_work_item_search_with_wiql_builds_valid_workitems_url():
     assert get_call["method"] == "GET"
     assert "wit/workitems?ids=101&$expand=all&api-version=7.1" in get_call["url"]
     assert result["count"] == 1
+
+
+def test_repo_get_file_uses_items_endpoint():
+    client = build_client()
+    client.repo_get_file("repo1", "/README.md", "main")
+    call = client.session.calls[0]
+    assert call["method"] == "GET"
+    assert "git/repositories/repo1/items?path=%2FREADME.md" in call["url"]
+
+
+def test_wiql_query_returns_normalized_shape():
+    client = build_client()
+    result = client.wiql_query("SELECT [System.Id] FROM WorkItems", top=10)
+    assert result["ids"] == [101]
+    assert "items" in result

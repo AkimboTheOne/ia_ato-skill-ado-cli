@@ -2,8 +2,19 @@
 
 ## v0.1
 
-- Scaffold inicial del repositorio baseline.
-- Implementación CLI dual humano/máquina.
-- Integración ADO Cloud P0 + exportes + validaciones mínimas.
-- Hotfix estabilidad `work-item search`: corrección de URL con query (`&api-version`) + escape de comillas en WIQL + tests de regresión (`tests/test_ado_client.py`).
-- Validación smoke real con Azure DevOps: consulta WIQL por `Epic` devuelve resultados correctamente.
+- Scaffold inicial del baseline.
+- CLI dual (uso humano y máquina).
+- Integración ADO Cloud para Work Items + Wiki.
+- Export Markdown + manifest JSON.
+- Guardrails de write para Work Items.
+- Hotfix de `work-item search`: query params y escape de comillas WIQL.
+
+## v0.2 (P1)
+
+- Nuevos comandos: `repo list|get-file|export`, `pr list|export`, `commit list|export`.
+- Nuevo comando `work-item wiql` para consultas avanzadas.
+- Nuevo comando `bundle export` para snapshot multi-objeto.
+- Caché local de lectura en `workspace/ado/cache` con TTL configurable.
+- Soporte de templates custom en export Markdown.
+- Contratos iniciales para P2: `run.request.schema.json` y `run.response.schema.json`.
+- Validación funcional con smoke test real ADO (read-only) sobre repos y commits.

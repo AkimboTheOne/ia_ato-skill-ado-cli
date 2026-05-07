@@ -36,6 +36,7 @@ def load_config(config_path: str = "config.yaml") -> AppConfig:
     defaults.tmp_dir = os.getenv("ADO_TMP_DIR", defaults.tmp_dir)
     defaults.timeout_seconds = int(os.getenv("ADO_TIMEOUT_SECONDS", defaults.timeout_seconds))
     defaults.max_results = int(os.getenv("ADO_MAX_RESULTS", defaults.max_results))
+    defaults.cache_ttl_seconds = int(os.getenv("ADO_CACHE_TTL_SECONDS", defaults.cache_ttl_seconds))
     policy.enabled = os.getenv("ADO_WRITE_ENABLED", str(policy.enabled)).lower() == "true"
     policy.require_dry_run = os.getenv("ADO_REQUIRE_DRY_RUN", str(policy.require_dry_run)).lower() == "true"
     return cfg
@@ -43,4 +44,3 @@ def load_config(config_path: str = "config.yaml") -> AppConfig:
 
 def get_pat(config: AppConfig) -> str:
     return os.getenv(config.azure_devops.auth.pat_env_var, "")
-

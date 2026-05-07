@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ato-skill-ado-cli"
-version = "0.1.0"
+version = "0.2.1"
 description = "Azure DevOps Cloud CLI skill"
 requires-python = ">=3.11"
 dependencies = [

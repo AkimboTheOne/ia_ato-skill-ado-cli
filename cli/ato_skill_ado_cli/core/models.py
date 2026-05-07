@@ -20,6 +20,7 @@ class DefaultsConfig(BaseModel):
     tmp_dir: str = "tmp/ado"
     max_results: int = 100
     timeout_seconds: int = 30
+    cache_ttl_seconds: int = 300
 
 
 class WritePolicy(BaseModel):
@@ -36,4 +37,3 @@ class AppConfig(BaseModel):
     azure_devops: AzureDevOpsConfig = Field(default_factory=AzureDevOpsConfig)
     defaults: DefaultsConfig = Field(default_factory=DefaultsConfig)
     write_policy: WritePolicy = Field(default_factory=WritePolicy)
-

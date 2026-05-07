@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 import requests
+from urllib.parse import quote
 
 from .errors import SkillError
 from .models import AppConfig
@@ -85,3 +86,37 @@ class AzureDevOpsClient:
     def wiki_get(self, path: str) -> dict[str, Any]:
         safe_path = path.replace(" ", "%20")
         return self._request("GET", f"wiki/wikis/{self.project}.wiki/pages?path=/{safe_path}&includeContent=true")
+
+    def repo_list(self) -> dict[str, Any]:
+        return self._request("GET", "git/repositories")
+
+    def repo_get_file(self, repository: str, path: str, branch: str = "main") -> dict[str, Any]:
+        safe_path = quote(path, safe="")
+        safe_branch = quote(branch)
+        return self._request(
+            "GET",
+            f"git/repositories/{repository}/items?path={safe_path}&includeContent=true&versionDescriptor.version={safe_branch}",
+        )
+
+    def pull_request_list(self, status: str = "active", top: int = 20) -> dict[str, Any]:
+        return self._request("GET", f"git/pullrequests?searchCriteria.status={status}&$top={top}")
+
+    def commit_list(self, repository: str, branch: str = "main", top: int = 20) -> dict[str, Any]:
+        safe_branch = quote(branch)
+        return self._request(
+            "GET",
+            f"git/repositories/{repository}/commits?searchCriteria.itemVersion.version={safe_branch}&$top={top}",
+        )
+
+    def wiql_query(self, wiql: str, top: int = 100) -> dict[str, Any]:
+        found = self._request("POST", "wit/wiql", {"query": wiql}).get("workItems", [])
+        ids = [i["id"] for i in found[:top]]
+        if not ids:
+            return {"count": 0, "ids": [], "items": []}
+        details = self._request("GET", f"wit/workitems?ids={','.join(map(str, ids))}&$expand=all")
+        return {
+            "count": details.get("count", 0),
+            "ids": ids,
+            "items": details.get("value", []),
+            "wiql": wiql,
+        }
