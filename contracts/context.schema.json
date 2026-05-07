@@ -1,1 +1,18 @@
-{"type":"object","required":["skill","version","commands"],"properties":{"skill":{"type":"string"},"version":{"type":"string"},"commands":{"type":"array","items":{"type":"string"}}}}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Context",
+  "type": "object",
+  "required": ["skill", "version", "commands"],
+  "properties": {
+    "skill": {"type": "string"},
+    "version": {"type": "string"},
+    "baseline_mode": {"type": "string"},
+    "organization": {"type": "string"},
+    "project": {"type": "string"},
+    "commands": {"type": "array", "items": {"type": "string"}},
+    "workspace_dir": {"type": "string"},
+    "export_dir": {"type": "string"},
+    "cache_ttl_seconds": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": true
+}

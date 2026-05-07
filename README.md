@@ -1,6 +1,6 @@
 # ato-skill-ado-cli
 
-CLI skill para Azure DevOps Cloud activado por `@ado`.
+Skill CLI para Azure DevOps Cloud activado por `@ado`.
 
 ## Quickstart
 
@@ -8,8 +8,8 @@ CLI skill para Azure DevOps Cloud activado por `@ado`.
 make install
 make bootstrap
 ato-skill-ado-cli config init
-ato-skill-ado-cli doctor
-ato-skill-ado-cli context
+ato-skill-ado-cli doctor --json
+ato-skill-ado-cli capabilities --json
 ```
 
 ## Alcance v0.2 (P1)
@@ -19,15 +19,23 @@ ato-skill-ado-cli context
 - Repos: `list`, `get-file`, `export` (read-only).
 - Pull Requests: `list`, `export` (read-only).
 - Commits: `list`, `export` (read-only).
-- Bundles: `bundle export` con snapshot unificado para downstream.
-- Cache TTL configurable (`defaults.cache_ttl_seconds`, `ADO_CACHE_TTL_SECONDS`).
-- Export custom templates con `--template` en `work-item export` y `wiki export`.
-- Preparación P2: contrato `run` + `validate --payload-file` y esquemas `run.request/response`.
+- Bundle: `bundle export` para snapshot unificado downstream.
 
 ## Guardrails de escritura
 
 - Default `read-only`.
-- Write sólo para Work Item individual.
+- Write solo para Work Item individual.
 - Requiere `--write` explícito.
-- Requiere `--dry-run` inicial antes de confirmar con `--yes`.
-- Bulk write, wiki write y repo write bloqueados.
+- Requiere `--dry-run` antes de confirmación con `--yes`.
+- Bloqueado: `bulk write`, `wiki write`, `repo write`.
+
+## Cache de lectura
+
+- TTL configurable: `defaults.cache_ttl_seconds` o `ADO_CACHE_TTL_SECONDS`.
+- Ubicación por defecto: `workspace/ado/cache`.
+
+## Contratos y manifiestos
+
+- Contratos CLI/interop en `contracts/`.
+- Exportes generan `manifest.json`.
+- Preparación P2: `run --payload-file` y schemas `run.request/response`.
