@@ -21,3 +21,8 @@ description: Skill CLI de Azure DevOps Cloud (@ado) para recuperar, normalizar y
 - Modo predeterminado `read-only`.
 - Escrituras solo para Work Item individual con `--write` y flujo seguro.
 - Prohibido bulk write, wiki write y repo write en v0.2.
+
+## Onboarding Local
+
+- Atajo recomendado: `./setup-skill.sh` (instala, bootstrap, config init, doctor y tests).
+- Flujo alterno: `make setup` o `./scripts/setup.sh --with-tests`.

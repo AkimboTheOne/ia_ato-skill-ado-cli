@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2
+
+- Added root onboarding shortcut `./setup-skill.sh` as visible entrypoint to the assisted setup flow.
+- Added unified assisted setup flow (`scripts/setup.sh`) with `install + bootstrap + config init + doctor` and optional tests.
+- Hardened install against PEP 668 by enforcing local `.venv`, selecting Python `>=3.11`, and adding Homebrew-aware remediation hints.
+- Updated docs and baseline guidance to standardize onboarding around `make setup` and `./setup-skill.sh`.
+
 ## 0.2.1
 
 - Documentation refresh: full docs set for architecture, CLI, security, governance, services, exports and validation.

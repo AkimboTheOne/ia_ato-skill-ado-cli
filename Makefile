@@ -1,9 +1,12 @@
 PYTHON ?= python3
 
-.PHONY: install bootstrap test validate doctor
+.PHONY: install setup bootstrap test validate doctor
 
 install:
-	$(PYTHON) -m pip install -e ".[dev]"
+	./scripts/install.sh
+
+setup:
+	./scripts/setup.sh
 
 bootstrap:
 	cp -n .env.example .env || true
@@ -16,4 +19,8 @@ validate:
 	ato-skill-ado-cli validate
 
 doctor:
-	ato-skill-ado-cli doctor
+	@if [ -x .venv/bin/ato-skill-ado-cli ]; then \
+		.venv/bin/ato-skill-ado-cli doctor; \
+	else \
+		ato-skill-ado-cli doctor; \
+	fi

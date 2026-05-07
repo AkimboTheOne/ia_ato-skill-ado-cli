@@ -924,8 +924,7 @@ ato-skill-ado-cli doctor --ci --json
 ### Dependencias Base
 
 - Python 3.11+
-- `pipx` recomendado para instalación CLI
-- `venv` soportado
+- `venv` requerido para desarrollo local
 - `make`
 - `curl`
 - `jq` opcional para pruebas JSON
@@ -933,8 +932,9 @@ ato-skill-ado-cli doctor --ci --json
 ### Instalación Recomendada
 
 ```bash
-make install
-make bootstrap
+./setup-skill.sh
+source .venv/bin/activate
+ato-skill-ado-cli capabilities --json
 ```
 
 ### Instalación Manual
@@ -942,19 +942,18 @@ make bootstrap
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -e .
-ato-skill-ado-cli doctor
+python -m pip install -e ".[dev]"
+ato-skill-ado-cli doctor --json
 ```
 
-### Homebrew
+### Nota PEP 668 y Homebrew Python
 
-Para v0.1 solo documentar posibilidad futura:
+No instalar dependencias con `pip` global del sistema. En macOS con Python gestionado
+por Homebrew, eso dispara `externally-managed-environment` (PEP 668). La instalación
+debe ocurrir dentro de `.venv` (vía `make install` o instalación manual con venv).
 
-```bash
-brew install ato-skill-ado-cli
-```
-
-No publicar fórmula en v0.1.
+El soporte para fórmula `brew install ato-skill-ado-cli` se mantiene como posible
+evolución futura, fuera del alcance de esta fase.
 
 ---
 

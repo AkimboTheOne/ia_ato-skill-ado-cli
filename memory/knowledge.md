@@ -15,3 +15,7 @@
   - directorio por defecto: `workspace/ado/cache`,
   - key hash SHA-256,
   - TTL configurable por `defaults.cache_ttl_seconds` o `ADO_CACHE_TTL_SECONDS`.
+- Onboarding local recomendado:
+  - `./setup-skill.sh` (atajo raíz visible),
+  - usa `scripts/setup.sh --with-tests`,
+  - instalación siempre en `.venv` para evitar errores de entorno gestionado (PEP 668).

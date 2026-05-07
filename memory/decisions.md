@@ -17,3 +17,9 @@
 - Se habilita plantilla custom en export Markdown (`--template`) para `work-item` y `wiki`.
 - Se prepara transición P2 con contrato `run` y validación de payload (`validate --payload-file`).
 - Se preserva política de seguridad: write únicamente en Work Item individual y flujo explícito `--write` + `--dry-run` + `--yes`.
+
+## v0.2.2 (onboarding/setup)
+
+- El onboarding local se estandariza en un entrypoint visible en raíz: `./setup-skill.sh`.
+- `make install` deja de depender de `pip` global y usa `.venv` local para evitar PEP 668.
+- `make setup`/`scripts/setup.sh` se consolidan como flujo asistido de instalación y verificación.
