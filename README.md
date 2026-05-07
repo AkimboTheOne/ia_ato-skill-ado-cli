@@ -5,11 +5,29 @@ Skill CLI para Azure DevOps Cloud activado por `@ado`.
 ## Quickstart
 
 ```bash
-make install
-make bootstrap
-ato-skill-ado-cli config init
-ato-skill-ado-cli doctor --json
+./setup-skill.sh
+source .venv/bin/activate
 ato-skill-ado-cli capabilities --json
+```
+
+Alternativas equivalentes:
+
+```bash
+make setup
+./scripts/setup.sh --with-tests
+```
+
+## Solución de problemas PEP 668 (externally-managed-environment)
+
+Este repositorio no instala dependencias en el Python global del sistema.
+`make install` crea/reutiliza un entorno virtual local en `.venv` e instala allí
+`ato-skill-ado-cli` con dependencias de desarrollo, evitando el error de PEP 668
+en instalaciones gestionadas por Homebrew u otros distribuidores.
+
+Si necesitas verificar estado inicial:
+
+```bash
+./scripts/doctor.sh
 ```
 
 ## Alcance v0.2 (P1)
