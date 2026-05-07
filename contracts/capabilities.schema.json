@@ -1,0 +1,1 @@
+{"type":"object","required":["read","export","write"],"properties":{"read":{"type":"array","items":{"type":"string"}},"export":{"type":"array","items":{"type":"string"}},"write":{"type":"array","items":{"type":"string"}}}}

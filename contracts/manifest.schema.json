@@ -1,0 +1,1 @@
+{"type":"object","required":["operation","object_type","object_id","output_files"],"properties":{"operation":{"type":"string"},"object_type":{"type":"string"},"object_id":{"type":"string"},"output_files":{"type":"array","items":{"type":"string"}}}}

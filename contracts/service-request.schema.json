@@ -1,0 +1,1 @@
+{"type":"object","required":["service","action"],"properties":{"service":{"type":"string"},"action":{"type":"string"},"params":{"type":"object"}}}
