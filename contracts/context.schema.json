@@ -1,0 +1,1 @@
+{"type":"object","required":["skill","version","commands"],"properties":{"skill":{"type":"string"},"version":{"type":"string"},"commands":{"type":"array","items":{"type":"string"}}}}

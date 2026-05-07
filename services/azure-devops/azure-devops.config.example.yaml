@@ -1,0 +1,6 @@
+azure_devops:
+  organization: ""
+  project: ""
+  api_version: "7.1"
+  auth:
+    pat_env_var: "ADO_PAT"

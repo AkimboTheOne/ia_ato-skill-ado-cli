@@ -1,0 +1,22 @@
+azure_devops:
+  organization: ""
+  project: ""
+  api_version: "7.1"
+  auth:
+    pat_env_var: "ADO_PAT"
+defaults:
+  output: "md"
+  workspace_dir: "workspace/ado"
+  export_dir: "exports/ado"
+  log_dir: "logs/ado"
+  tmp_dir: "tmp/ado"
+  max_results: 100
+  timeout_seconds: 30
+write_policy:
+  enabled: false
+  require_write_flag: true
+  require_dry_run: true
+  require_confirmation: true
+  allowed_objects: ["work_item"]
+  forbidden_objects: ["wiki", "repo", "pull_request", "pipeline"]
+  allow_bulk: false
